@@ -12,7 +12,7 @@ class Solution{
         long long sumUnderModulo(long long a,long long b)
     {
         // code her
-      const  int M = 1000000007;
+      const  int M = 1e9+7;
         return ( ( a % M ) + ( b % M ) ) % M;
     }
 };
