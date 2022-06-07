@@ -10,29 +10,33 @@ class Solution{
     //Function to rotate an array by d elements in counter-clockwise direction. 
     void rotateArr(int arr[], int d, int n){
         // code here
-    //     int arr1[n];
-    //     for(int i = 0;i<d;i++){
-    //     arr1[i] = arr[i];
-    // }
-    // for(int i=0;i<n-d;i++){
-    //     arr[i] = arr[i+d];
-    // }
-    // for(int i=n-d,j=0;i<n;i++){
-    //     arr[i] = arr1[j++];
-    // }
-    while(d>n){
+        while(d>n){
            d=d-n;
        }
-     int temp[d];
-    for(int i=0;i<d;i++){
-        temp[i] = arr[i];
+     int arr1[d];
+        for(int i = 0;i<d;i++){
+        arr1[i] = arr[i];
     }
-    for(int i = d;i<n;i++){
-        arr[i-d] = arr[i];
+    for(int i=0;i<n-d;i++){
+        arr[i] = arr[i+d];
     }
-    for(int i=0;i<d;i++){
-        arr[n-d+i] = temp[i];
+    for(int i=n-d,j=0;i<n;i++){
+        arr[i] = arr1[j++];
     }
+    
+    // while(d>n){
+    //       d=d-n;
+    //   }
+    //  int temp[d];
+    // for(int i=0;i<d;i++){
+    //     temp[i] = arr[i];
+    // }
+    // for(int i = d;i<n;i++){
+    //     arr[i-d] = arr[i];
+    // }
+    // for(int i=0;i<d;i++){
+    //     arr[n-d+i] = temp[i];
+    // }
     
     }
 };
