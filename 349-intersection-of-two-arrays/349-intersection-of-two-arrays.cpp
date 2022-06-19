@@ -6,10 +6,7 @@ public:
         sort(nums1.begin(),nums1.end());
         sort(nums2.begin(),nums2.end());
         set<int> s;
-        // if(n>m)
-        //     n=n;
-        // else
-        //     n=m;
+        
         for(int i = 0;i<n;i++){
             for(int j = 0;j<m;j++){
                 if(nums1[i]==nums2[j])
