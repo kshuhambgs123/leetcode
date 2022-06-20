@@ -18,6 +18,11 @@ public:
                     
                 }
             }
+            count++;
+            if(count == k){
+                ans = k;
+                break;
+            }
             
         }
         return nums[n-k];    
