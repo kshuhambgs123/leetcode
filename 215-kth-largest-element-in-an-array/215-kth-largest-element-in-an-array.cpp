@@ -18,7 +18,7 @@ public:
                     
                 }
             }
-            count++;
+            count++;  // after 1st iteration of i take count of largest at end  if equal to k then return n-k;
             if(count == k){
                 ans = k;
                 break;
