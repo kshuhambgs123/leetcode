@@ -7,7 +7,7 @@ public:
         int ans = 0;
         
         // bubble sort largest at end
-        for(int i=0;i<n-1;i++){
+        for(int i=0;i<k;i++){
             for(int j = 0;j<n-1-i;j++){
                 
                 if(nums[j]>nums[j+1]){
@@ -18,11 +18,11 @@ public:
                     
                 }
             }
-            count++;  // after 1st iteration of i take count of largest at end  if equal to k then return n-k;
-            if(count == k){
-                ans = k;
-                break;
-            }
+            // count++;  // after 1st iteration of i take count of largest at end  if equal to k then return n-k;
+            // if(count == k){
+            //     ans = k;
+            //     break;
+            //}
             
         }
         return nums[n-k];    
