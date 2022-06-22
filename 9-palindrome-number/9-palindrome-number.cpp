@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        int t = x/2,p=x;
+        //int t = x/2,p=x;
         int s=0;
         if(x<0 || (x>0 && x%10==0)){
             return false;;
