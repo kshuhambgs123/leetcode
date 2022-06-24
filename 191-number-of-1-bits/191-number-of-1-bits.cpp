@@ -1,17 +1,12 @@
 class Solution {
 public:
     int hammingWeight(uint32_t n) {
-       // right shift >> we append 0 to left side  // for signed integer
+        int ans = 0;
         
-        // left shift << we append 0 to right side
-     int ans = 0;
-        while(n){
-            if(n&1){
+        for (int i = 0;i<32;i++){
+            if( ( (n>>i) & 1) !=0 )
                 ans++;
-            }
-            n = n>>1;
         }
         return ans;
-        
     }
 };
