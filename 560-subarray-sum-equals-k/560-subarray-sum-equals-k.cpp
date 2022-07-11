@@ -3,6 +3,7 @@ public:
     int subarraySum(vector<int>& nums, int k) {
         
         // for fast I/O in C++
+        // TC = O(N),SC = O(N)
         
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
