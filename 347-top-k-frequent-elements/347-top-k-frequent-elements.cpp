@@ -1,34 +1,21 @@
 class Solution {
 public:
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        
-        int n = nums.size();
-        int cnt = 0;
-        map<int,int> freq; // make a freq map store freq of each key
-        
-        for(int i=0;i<n;i++){
-            freq[nums[i]]++;   
+       vector<int> res;
+        map<int,int> m;
+        for(auto x: nums){
+            m[x]++;
         }
-        
         vector<pair<int,int>> v;
-        vector<int> vec;
+        for(auto x:m){
+            v.push_back({x.second,x.first});
+        }
+        sort(v.begin(),v.end(),greater<pair<int,int>>());
         
-        map<int,int>:: iterator it; // iterator for map
-        pair<int,int> p; // pair for vector
-        for(it = freq.begin();it!=freq.end();it++){ 
-            p.first = it->second;
-            p.second = it->first;
-            v.push_back(p); // store freq and key in vector pair
+        for(int i=0;i<k;i++){
+            res.push_back(v[i].second);
         }
         
-      //  sort(v.rbegin(),v.rend());
-    sort(v.begin(),v.end(),greater<pair<int,int>>());
-        // sort in decreasing order to get frequent
-        int n1 = v.size();
-        for(int i =0;i<k;i++){ // add to vector till k frequent
-            vec.push_back(v[i].second);
-        }
-        return vec ;  
+        return res;   
     }
-
 };
