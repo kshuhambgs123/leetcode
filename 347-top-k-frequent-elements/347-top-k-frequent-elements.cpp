@@ -21,8 +21,8 @@ public:
             v.push_back(p); // store freq and key in vector pair
         }
         
-        sort(v.rbegin(),v.rend());
-    //sort(v.rbegin(),v.rend(),greater<pair<int,int>>());
+      //  sort(v.rbegin(),v.rend());
+    sort(v.begin(),v.end(),greater<pair<int,int>>());
         // sort in decreasing order to get frequent
         int n1 = v.size();
         for(int i =0;i<k;i++){ // add to vector till k frequent
