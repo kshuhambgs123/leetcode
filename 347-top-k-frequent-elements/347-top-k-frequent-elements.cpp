@@ -22,9 +22,10 @@ public:
         }
         
         sort(v.rbegin(),v.rend());
-             //greater<pair<int,int>>()); // sort in decreasing order 
+    //sort(v.rbegin(),v.rend(),greater<pair<int,int>>());
+        // sort in decreasing order to get frequent
         int n1 = v.size();
-        for(int i =0;i<k;i++){
+        for(int i =0;i<k;i++){ // add to vector till k frequent
             vec.push_back(v[i].second);
         }
         return vec ;  
