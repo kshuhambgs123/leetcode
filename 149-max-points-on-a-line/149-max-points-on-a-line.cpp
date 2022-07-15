@@ -2,7 +2,7 @@ class Solution {
 public:
     int maxPoints(vector<vector<int>>& points) {
     map<pair<int, int>, int> mp;
-        sort(points.begin(), points.end());
+       // sort(points.begin(), points.end());
         int n = points.size();
         if (n == 0) return 0;
         int ans = 1;
