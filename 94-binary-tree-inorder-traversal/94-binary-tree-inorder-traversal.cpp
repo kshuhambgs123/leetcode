@@ -19,12 +19,12 @@ public:
     }
     
     void helper(TreeNode* root,vector<int>&nodes){
-        if(root==NULL){
-            return;
-        }
+        if(root!=NULL){
         helper(root->left,nodes);
         nodes.push_back(root->val);
         helper(root->right,nodes);
+        }
+        
     }
     
 };
