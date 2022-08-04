@@ -1,36 +1,39 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        vector<int> v(2);
-        v[0] = search(nums,target,-1);
-        v[1] = search(nums,target,1);
-        
-        return v;
+        vector<int> ind;
+        ind.push_back(firstLastOccur(nums,target,-1));
+        ind.push_back(firstLastOccur(nums,target,1));
+        return ind;
     }
-    int search(vector<int>& nums, int target,int tog){
+    int firstLastOccur(vector<int>& nums, int target,int k) {
+        int ans = -1;
         int l = 0;
         int h = nums.size()-1;
-        int idx = -1; 
         
         while(l<=h){
             int mid = l + (h-l)/2;
             
-            if(nums[mid]>target){
-                h = mid-1;
-            }
-            else if(nums[mid]<target){
-                l = mid+1;
-            }
-            else{
-                idx = mid;
-                if(tog == -1){
-                    h = mid+tog;
+            if(target==nums[mid]){
+                ans = mid;
+                
+                if(k == -1){ 
+    // if go for first occuurence check further left of it
+                    h = mid+k;
                 }
                 else
-                    l = mid+tog;
+                    l = mid+k; 
+    // if go for last occuurence check further right of it 
             }
-            
+            else if(target<nums[mid]){
+                h = mid -1;
+            }
+            else{
+                l=mid+1;
+            }
         }
-        return idx;
+        return ans;
+        
     }
+    
 };
