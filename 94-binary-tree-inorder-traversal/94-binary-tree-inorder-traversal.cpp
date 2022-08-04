@@ -25,8 +25,6 @@ public:
         helper(root->left,nodes);
         nodes.push_back(root->val);
         helper(root->right,nodes);
-        
-        return;
     }
     
 };
