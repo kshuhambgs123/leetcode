@@ -10,7 +10,8 @@ public:
         //     }
         // }
         // return maxws;
-        
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         
         // TC:O(N) SC:(1)
         int l = 0,r=n-1;
