@@ -12,11 +12,18 @@
 class Solution {
 public:
     TreeNode* invertTree(TreeNode* root) {
-        if(root!=NULL){
-            invertTree(root->left);
-            invertTree(root->right);
-            swap(root->left,root->right);
+         std::stack<TreeNode*> s;
+         s.push(root);
+    
+        while (!s.empty()) {
+            TreeNode* p = s.top();
+            s.pop();
+            if (p) {
+                s.push(p->left);
+                s.push(p->right);
+                std::swap(p->left, p->right);
+            }
         }
-       return root;   
+        return root;
     }
 };
