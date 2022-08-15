@@ -12,17 +12,17 @@
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode* root) {
-    vector<int>nodes;
-        helper(root,nodes);
+        vector<int> nodes;
+        helper(root, nodes);
         return nodes;
     }
     
-    void helper(TreeNode* root,vector<int>&nodes){
+    void helper(TreeNode* root, vector<int> &nodes){
         if(root!=NULL){
-        
-        helper(root->left,nodes);
-        helper(root->right,nodes);
-        nodes.push_back(root->val);
+            helper(root->left, nodes);
+            helper(root->right, nodes);
+            nodes.push_back(root->val);
         }
     }
+    
 };
