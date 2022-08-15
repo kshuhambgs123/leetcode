@@ -11,35 +11,30 @@
  */
 class Solution {
 public:
+    bool isBalanced(TreeNode* root) {
+        if(root==NULL) 
+            return true;
+        int h = helper(root);
+        
+        if(h==-1)
+            return false;
+        return true;
+       
+    }
     
-    int depth(TreeNode* root){
+    int helper(TreeNode* root){
         if(root==NULL)
             return 0;
-        return 1+max(depth(root->left),depth(root->right));
-    }
-    bool isBalanced(TreeNode* root) {
         
-        if(root==NULL)
-            return true;
-    queue<TreeNode*> q;
-        q.push(root);
+        int lh = helper(root->left);
+        if(lh==-1) return -1;
         
-        while(!q.empty()){
-            TreeNode* curr = q.front();
-            q.pop();
-            
-            int l = depth(curr->left);
-            int r = depth(curr->right);
-            
-            if(abs(l-r)>1)
-                return false;
-            
-            if(curr->left!=NULL)
-                q.push(curr->left);
-            
-            if(curr->right!=NULL)
-                q.push(curr->right);   
-        }
-        return true; 
+        int rh = helper(root->right);
+        if(rh==-1) return -1;
+        
+        if(abs(lh-rh)>1) return -1;
+        else
+        return 1+max(lh,rh);
     }
+    
 };
