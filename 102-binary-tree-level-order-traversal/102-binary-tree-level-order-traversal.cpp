@@ -12,28 +12,28 @@
 class Solution {
 public:
     vector<vector<int>> levelOrder(TreeNode* root) {
-        vector<vector<int>> res; // take a list of vector to store level wise list 
-        if(root==NULL)     // root= null return empty list
-            return {};
-        
-        queue<TreeNode*> q;  // take a queue in which we have to store first root and its size after that
+        vector<vector<int>> v;
+        helper(root,v);
+        return v;
+    }
+    
+    void helper(TreeNode* root, vector<vector<int>>&v){
+        if (root==NULL) return;
+        queue<TreeNode*> q;
         q.push(root);
-        TreeNode *tmp;  // create a tmp variable of type TreeNode to store front
         
-        int l;
-        while(!q.empty()){  // while q not become empty
-            l = q.size(); // size of queue updated
-            vector<int>v; // take vector to store level wise node in this list to add in list of vector for each level
-            for(int i=0;i<l;i++){
-                tmp = q.front();  
-                q.pop();  // pop front as level 1
-                v.push_back(tmp->val);  // store into vector after popping front
-                
-                if(tmp->left) q.push(tmp->left);  //  similar store its  left  and right a
-                if(tmp->right) q.push(tmp->right); // pop one and store its left and right child will come into same level next
+        while(!q.empty()){
+            int s = q.size();
+            vector<int> l;
+            for(int i=0;i<s;i++){
+               
+                TreeNode * curr = q.front();
+                q.pop();
+                l.push_back(curr->val);
+                if(curr->left!=NULL) q.push(curr->left);
+                if(curr->right!=NULL) q.push(curr->right);
             }
-            res.push_back(v);  // add list of vector to a list
+             v.push_back(l); 
         }
-        return res; // return list of vector
     }
 };
