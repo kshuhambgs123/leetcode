@@ -1,33 +1,38 @@
 class Solution {
 public:
-      double mediann(vector<int>&a,vector<int>&b){
-       int m=a.size();
-        int n=b.size();
-        if(m>n)
-            return mediann(b,a);
-        int l=0,r=m;
-        while(l<=r){
-            int partx=l+(r-l)/2;
-            int party=(m+n+1)/2-partx;
-            int maxlx=(partx==0)?INT_MIN:a[partx-1];
-            int minrx=(partx==m)?INT_MAX:a[partx];
-            int maxly=(party==0)?INT_MIN:b[party-1];
-            int minry=(party==n)?INT_MAX:b[party];
-            if(maxlx<=minry&&maxly<=minrx){
-                if((m+n)%2==0)
-                    return (double)(max(maxlx,maxly)+min(minrx,minry))/2;
-                else
-                    return (double)(max(maxlx,maxly));
-            }else if(maxlx>minry)
-                r=partx-1;
-            else
-                l=partx+1;
-        }
-        return -1.0;
-    }
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        double ans;
-        ans=mediann(nums1,nums2);
-        return ans;   
+        if(nums2.size() < nums1.size()) return findMedianSortedArrays(nums2,nums1);
+        int l = 0;
+        int h = nums1.size();
+        int n1 = nums1.size();
+        int n2 = nums2.size();
+        
+        while(l<=h){
+            int i1 = (l+h)>>1; // partition
+            int i2 = (n1+n2+1)/2 -i1;
+            
+            
+            int min1 = (i1==n1) ? INT_MAX : nums1[i1]; 
+// if partition is of lenth of input means nothing on right side , use +INF for minright
+            int max1 = (i1==0)  ? INT_MIN : nums1[i1-1];
+            //if partition is of lenth of 0 means nothing on left side , use -INF for maxleft
+            int min2 = (i2==n2) ? INT_MAX : nums2[i2];
+            int max2 = (i2==0)  ? INT_MIN : nums2[i2-1];
+            
+            if(max1<=min2 && max2<=min1){
+                // we have partitioned arrray correctly. now consider median in both case
+                if( (n1+n2)%2 == 0)
+                    return ( max(max1,max2) + min(min1,min2)) /2.0;
+                else
+                    return max(max1,max2);
+            }
+            else if(max1>min2){
+                h = i1-1; // we are too far for right side partition. go to left
+            }
+            else{
+                l = i1+1; // go to right ( max2> min1)
+            }
+        }
+        return 0.0;
     }
 };
