@@ -30,7 +30,7 @@ public:
             rmax[i] = max(h[i],rmax[i+1]);
         }
         // store water lmax - rmax - h[i]
-        for(int i=1;i<n;i++){
+        for(int i=0;i<n;i++){
             ans += min(lmax[i],rmax[i]) - h[i];
         }
         
