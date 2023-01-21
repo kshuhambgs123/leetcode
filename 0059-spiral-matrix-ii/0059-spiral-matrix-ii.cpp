@@ -3,6 +3,7 @@ public:
     vector<vector<int>> generateMatrix(int n) {
         int r1 = 0, r2 = n-1, c1 = 0, c2 = n-1;
         int val = 1;
+        
         vector<vector<int>> v(n,vector<int>(n));
         
         while(r1<=r2 && c1<=c2){
@@ -18,11 +19,11 @@ public:
             // move  up
             if(r1 < r2 && c1 <c2){
                 // move right to left (row will be fixed)
-                for(int i = c2-1;i>c1;i--){
+                for(int i = c2-1;i>=c1;i--){
                     v[r2][i] = val++;
                 }
                 // move up (col will be fixed)
-                for(int i = r2;i>r1;i--){
+                for(int i = r2-1;i>r1;i--){
                     v[i][c1] = val++;
                 }
             }
